@@ -1,0 +1,38 @@
+package com.dms.dao;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import com.dms.model.TreatmentMasterModel;
+
+
+public class TreatmentMasterDaoImpl implements TreatmentMasterDao {
+
+	@Override
+	public boolean saveTreatment(TreatmentMasterModel master) {
+		
+		//save treatment to database
+		return true;
+	}
+
+	@Override
+	public List<TreatmentMasterModel> getTreatmentMasterModelByPatientName(String patientName) {
+		//get list of model object using patient name
+		List list = null;
+		try {
+		list=new ArrayList<TreatmentMasterModel>();
+		TreatmentMasterModel masterModel=new TreatmentMasterModel();
+		
+		
+		}
+		catch(Exception exception)
+		{
+			exception.printStackTrace();
+		}
+		
+		return list;
+	}
+
+	
+
+}

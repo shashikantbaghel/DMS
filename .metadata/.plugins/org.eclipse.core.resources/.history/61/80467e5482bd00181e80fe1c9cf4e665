@@ -1,0 +1,37 @@
+package com.dms.view;
+
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import javax.swing.JComboBox;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JScrollPane;
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
+
+public class TreatmentHistory implements ActionListener {
+	
+	JFrame patientHistoryFrame;
+	JLabel headingLabel,patientNameLabel,patientdetailsLabel,addressLabel,mobileNoLabel,AgeLabel,GenderLabel,treatmentLabel;
+	JLabel patientNameLabelValue,patientdetailsLabelValue,addressLabelValue,mobileNoLabelValue,AgeLabelValue,GenderLabelValue;
+	JComboBox patientNameBox;
+	DefaultTableModel model;
+	JTable jtable;
+	JScrollPane jScrollPane;
+	public TreatmentHistory() {
+	
+	}
+
+	public static void main(String[] args) {
+		new TreatmentHistory();
+	}
+	@Override
+	public void actionPerformed(ActionEvent arg0) {
+		// TODO Auto-generated method stub
+		
+	}
+	
+	
+
+}

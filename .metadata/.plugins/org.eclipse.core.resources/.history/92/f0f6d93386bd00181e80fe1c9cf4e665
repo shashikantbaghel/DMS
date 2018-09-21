@@ -1,0 +1,29 @@
+package com.dms.view;
+
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+public class Record implements ActionListener {
+	
+	
+	public Record() {
+	
+		
+		
+	}
+	
+	public static void main(String[] args) {
+		new Record();
+	}
+
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		
+		
+	}
+
+	
+	
+	
+	
+}

@@ -1,0 +1,11 @@
+package com.dms.dao;
+
+import com.dms.model.Treatment;
+import com.dms.model.TreatmentMasterModel;
+
+public interface TreatmentMasterDao {
+	
+	boolean saveTreatment(TreatmentMasterModel master);
+	TreatmentMasterModel getTreatmentMasterModelByPatientName(String patientName);
+
+}
