@@ -1,0 +1,144 @@
+package com.dms.view;
+
+import java.awt.Dimension;
+import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.util.List;
+
+import javax.swing.JButton;
+import javax.swing.JComboBox;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JScrollPane;
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
+
+import com.dms.dao.PatientDaoImpl;
+
+public class Appointment implements ActionListener {
+	
+	JFrame apponitmentFrame;
+	JLabel headingLabel,patientNameLabel,patientdetailsLabel,addressLabel,mobileNoLabel,AgeLabel,GenderLabel,treatmentLabel;
+	JLabel patientNameLabelValue,patientdetailsLabelValue,addressLabelValue,mobileNoLabelValue,AgeLabelValue,GenderLabelValue;
+	JComboBox patientNameBox;
+	DefaultTableModel model;
+	JTable jtable;
+	JScrollPane jScrollPane;
+	JButton backButton;
+	public Appointment() {
+	apponitmentFrame=new JFrame("Apponitment");
+	apponitmentFrame.setPreferredSize(new Dimension(1366, 768));
+	
+	String column[]={"TREATMENT DATE","TREATMENT","AMOUNT PAID","BALANCE"};    
+	model = new DefaultTableModel();
+	model.setColumnIdentifiers(column);
+	jtable=new JTable();
+	
+	jtable.setModel(model);
+	jtable.setAutoResizeMode(JTable.AUTO_RESIZE_ALL_COLUMNS);
+	jtable.setFillsViewportHeight(true);
+	jScrollPane=new JScrollPane(jtable);
+	jScrollPane.setBounds(100,350,800,200);
+	jScrollPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
+	jScrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
+	
+	apponitmentFrame.add(jScrollPane);
+	
+	
+	
+	headingLabel=new JLabel("Patient History");
+	headingLabel.setFont(new Font("Aerial", Font.PLAIN, 50));
+		
+	patientNameBox=new JComboBox();
+	
+	
+	patientNameBox.addActionListener(this);
+
+       List<String> l=new PatientDaoImpl().getPatientNames();
+		
+		for(String i:l) {
+			patientNameBox.addItem(i);
+		}
+	
+	
+		
+	patientNameLabel=new JLabel("Patient Name:");
+	addressLabel=new JLabel("Address");
+	mobileNoLabel=new JLabel("Mobile No");
+	AgeLabel=new JLabel("Age");
+	GenderLabel=new JLabel("Gender");
+	treatmentLabel=new JLabel("Treatment details");
+	
+	addressLabelValue=new JLabel();
+	mobileNoLabelValue=new JLabel();
+	AgeLabelValue=new JLabel();
+	GenderLabelValue=new JLabel();
+	
+	backButton=new JButton("Back");
+	
+	backButton.addActionListener(this);
+	
+	headingLabel.setBounds(50, -25, 400, 100);
+	
+	patientNameLabel.setBounds(100,100,150,30);
+	addressLabel.setBounds(120,200,150,30);
+	mobileNoLabel.setBounds(120,250,150,30);
+	AgeLabel.setBounds(500,250,50,30);
+	GenderLabel.setBounds(600,250,50,30);
+	treatmentLabel.setBounds(100,300,150,30);
+	
+	addressLabelValue.setBounds(280,200,150,30);
+	mobileNoLabelValue.setBounds(280,250,150,30);
+	AgeLabelValue.setBounds(550,250,50,30);
+	GenderLabelValue.setBounds(650,250,50,30);
+	
+	patientNameBox.setBounds(260,100,200,30);
+	
+	backButton.setBounds(100,570,100,30);
+	
+	
+	apponitmentFrame.add(headingLabel);
+	
+	apponitmentFrame.add(patientNameLabel);
+	apponitmentFrame.add(addressLabel);
+	apponitmentFrame.add(mobileNoLabel);
+	apponitmentFrame.add(AgeLabel);
+	apponitmentFrame.add(GenderLabel);
+	apponitmentFrame.add(treatmentLabel);
+	
+	apponitmentFrame.add(addressLabelValue);
+	apponitmentFrame.add(mobileNoLabelValue);
+	apponitmentFrame.add(AgeLabelValue);
+	apponitmentFrame.add(GenderLabelValue);
+	
+	apponitmentFrame.add(patientNameBox);
+	
+	apponitmentFrame.add(backButton);
+	
+	apponitmentFrame.setLayout(null);
+	apponitmentFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+	apponitmentFrame.pack();
+	apponitmentFrame.setLocationRelativeTo(null);
+	apponitmentFrame.setVisible(true);
+
+	
+	apponitmentFrame.setLayout(null);
+	apponitmentFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+	apponitmentFrame.pack();
+	apponitmentFrame.setLocationRelativeTo(null);
+	apponitmentFrame.setVisible(true);
+
+	}
+	
+	public static void main(String[] args) {
+		new Appointment();
+	}
+
+	@Override
+	public void actionPerformed(ActionEvent arg0) {
+		// TODO Auto-generated method stub
+		
+	}
+
+}

@@ -1,0 +1,28 @@
+package com.dms.view;
+
+import java.awt.Dimension;
+
+import javax.swing.JFrame;
+
+public class Appointment {
+	
+	JFrame apponitmentFrame;
+	
+	public Appointment() {
+	apponitmentFrame=new JFrame("Apponitment");
+	apponitmentFrame.setPreferredSize(new Dimension(1366, 768));
+	
+	
+	apponitmentFrame.setLayout(null);
+	apponitmentFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+	apponitmentFrame.pack();
+	apponitmentFrame.setLocationRelativeTo(null);
+	apponitmentFrame.setVisible(true);
+
+	}
+	
+	public static void main(String[] args) {
+		new Appointment();
+	}
+
+}

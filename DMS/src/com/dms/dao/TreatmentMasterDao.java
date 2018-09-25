@@ -2,7 +2,6 @@ package com.dms.dao;
 
 import java.util.List;
 
-import com.dms.model.Treatment;
 import com.dms.model.TreatmentMasterModel;
 
 public interface TreatmentMasterDao {

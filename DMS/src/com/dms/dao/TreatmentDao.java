@@ -1,10 +1,8 @@
 package com.dms.dao;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import com.dms.model.Treatment;
-import com.dms.view.TreatmentInfo;
 
 public interface TreatmentDao {
 

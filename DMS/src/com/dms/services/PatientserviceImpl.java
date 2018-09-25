@@ -11,7 +11,8 @@ public class PatientserviceImpl implements PatientService {
 
 	@Override
 	public boolean[] checkPatientInfo(Patient patient) {
-		Boolean nameBoolean=false,addBoolean=false,mobBoolean=false,ageboolean=false,sextypeBoolean=false,statustypeBoolean=false;
+		Boolean nameBoolean=false,addBoolean=false,mobBoolean=false,ageboolean=false,sextypeBoolean=false,statustypeBoolean=false,
+				dateBoolean=false;
 		
 		 Pattern pattern = Pattern.compile("\\d{10}|(?:\\d{3}-){2}\\d{4}|\\(\\d{3}\\)\\d{3}-?\\d{4}");
 	      Matcher matcher = pattern.matcher(patient.getMobile());
@@ -30,7 +31,9 @@ public class PatientserviceImpl implements PatientService {
 				sextypeBoolean=true;
 		if("".equals(patient.getStatus()))
 			statustypeBoolean=true;
-		return new boolean[] {nameBoolean,addBoolean,mobBoolean,ageboolean,sextypeBoolean,statustypeBoolean};
+		if("".equals(patient.getApponitmentdate())||patient.getApponitmentdate()==null)
+			dateBoolean=true;
+		return new boolean[] {nameBoolean,addBoolean,mobBoolean,ageboolean,sextypeBoolean,statustypeBoolean,dateBoolean};
 	}
 
 	@Override

@@ -1,0 +1,17 @@
+package com.dms.view;
+
+import javax.swing.JFrame;
+
+public class Appointment {
+	
+	JFrame apponitmentFrame;
+	
+	public Appointment() {
+	apponitmentFrame=new JFrame("Apponitment");	
+	}
+	
+	public static void main(String[] args) {
+		
+	}
+
+}

@@ -19,7 +19,7 @@ public class TreatmentMasterDaoImpl implements TreatmentMasterDao {
 	@Override
 	public List<TreatmentMasterModel> getTreatmentMasterModelByPatientName(String patientName) {
 		//get list of model object using patient name
-		List list = null;
+		List<TreatmentMasterModel> list = null;
 		try {
 			if(patientName.equalsIgnoreCase("Anuj"))
 			{
@@ -63,7 +63,7 @@ public class TreatmentMasterDaoImpl implements TreatmentMasterDao {
 	@Override
 	public List<TreatmentMasterModel> getTreatmentMasterModelByTreatmentName(String treatNmeName) {
 		
-		List list = null;
+		List<TreatmentMasterModel> list = null;
 		try {
 			if(treatNmeName.equalsIgnoreCase("Phla Ilaaz"))
 			{

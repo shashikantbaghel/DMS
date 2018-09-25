@@ -1,0 +1,75 @@
+import java.awt.Dimension;
+
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+
+
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+
+import net.sourceforge.jdatepicker.impl.JDatePanelImpl;
+import net.sourceforge.jdatepicker.impl.JDatePickerImpl;
+import net.sourceforge.jdatepicker.impl.UtilDateModel;
+
+
+public class Test implements ActionListener {
+
+	UtilDateModel model;
+	JDatePanelImpl datePanel;
+	JDatePickerImpl datePicker;
+	JFrame frame;
+	public Test() {
+	
+		 frame=new JFrame("Date");
+		 frame.setPreferredSize(new Dimension(400,400));
+		
+		 model = new UtilDateModel();
+		 model.setDate(1990, 8, 24);
+		 model.setSelected(true);
+		
+		 datePanel = new JDatePanelImpl(model);
+		 datePicker = new JDatePickerImpl(datePanel);
+		
+		
+		 datePicker = new JDatePickerImpl(datePanel, new DateLabelFormatter());
+		
+		 JLabel jLabel=new JLabel("Birthday: ");
+		 
+		 JButton buttonOK = new JButton("OK");
+		 buttonOK.addActionListener(this);
+		 
+		 jLabel.setBounds(100,20,100,30);
+		 datePicker.setBounds(210,20,150,30);
+		 buttonOK.setBounds(150,50,150,30);
+		
+		 frame.add(jLabel);
+		 frame.add(datePicker);
+		 frame.add(buttonOK);
+		
+		
+		 frame.setLayout(null);
+		 frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		 frame.pack();
+		 frame.setLocationRelativeTo(null);
+		 frame.setVisible(true);
+		
+	}
+	
+	public static void main(String[] args) {
+	
+		new Test();
+	}
+
+	@Override
+	public void actionPerformed(ActionEvent arg0) {
+
+         Date selectedDate = (Date) datePicker.getModel().getValue();
+		
+
+		
+		JOptionPane.showMessageDialog(null, "The selected date is " + selectedDate);
+	}
+}

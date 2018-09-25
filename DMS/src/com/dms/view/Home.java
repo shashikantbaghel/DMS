@@ -107,7 +107,8 @@ public class Home implements ActionListener {
 			
 		}
 		else if (e.getSource() == appointmentsButton) {
-			homeFrame.setVisible(false);
+			homeFrame.dispose();
+			new Appointment();
 		
 		} else if (e.getSource() == reportsButton) {
 			

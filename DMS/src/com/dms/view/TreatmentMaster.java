@@ -6,6 +6,8 @@ import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.ItemEvent;
+import java.awt.event.ItemListener;
 import java.util.Date;
 import java.util.List;
 
@@ -26,14 +28,14 @@ import com.dms.model.Treatment;
 import com.dms.model.TreatmentMasterModel;
 import com.dms.services.TreatmentMasterServiceIml;
 
-public class TreatmentMaster implements ActionListener {
+public class TreatmentMaster implements ActionListener,ItemListener {
 	
 	
 	JFrame treatmentMasterFarme;
-	JComboBox patientNameBox,treatmentNameBox;
+	JComboBox patientNameBox,treatmentNameBox,phoneBox;
 	JTextField apprximatetimeField,approximatecostField,totalpaidamountField,balanceamountField;
 	JLabel selectpatientNameLabel,selecttreatmentNameLabel,approximatetimeLabel,approximatecostLabel,totalpaidamountLabel,balanceamountLabel
-	,headingLabel,prescriptionLabel;
+	,headingLabel,prescriptionLabel,phoneLabel;
 	JTextArea prescriptionArea;
 	JButton saveButton,save_Printbutton,restbutton,backButton;
 	public TreatmentMaster() {
@@ -51,10 +53,11 @@ public class TreatmentMaster implements ActionListener {
 		totalpaidamountLabel=new JLabel("Total Paid");
 		balanceamountLabel=new JLabel("Balance Amonut");
 		prescriptionLabel=new JLabel("Prescription");
+		phoneLabel=new JLabel("Phone");
 		
 		patientNameBox=new JComboBox();
 		treatmentNameBox=new JComboBox();
-		
+		phoneBox=new JComboBox();
 		
 		
 		prescriptionArea=new JTextArea();
@@ -71,8 +74,10 @@ public class TreatmentMaster implements ActionListener {
 		save_Printbutton.addActionListener(this);
 		restbutton.addActionListener(this);
 		backButton.addActionListener(this);
-		patientNameBox.addActionListener(this);
+		//patientNameBox.addActionListener(this);
+		patientNameBox.addItemListener(this);
 		treatmentNameBox.addActionListener(this);
+		phoneBox.addActionListener(this);
 		
 		apprximatetimeField=new JTextField();
 		approximatecostField=new JTextField();
@@ -92,16 +97,18 @@ public class TreatmentMaster implements ActionListener {
 		}
 		headingLabel.setBounds(50, -25, 400, 100);
 		
-		selectpatientNameLabel.setBounds(200, 100, 202, 30);
+		selectpatientNameLabel.setBounds(10, 100, 202, 30);
 		selecttreatmentNameLabel.setBounds(450, 100, 202, 30);
 		approximatetimeLabel.setBounds(700, 100, 202, 30);
 		approximatecostLabel.setBounds(950, 100, 202, 30);
         totalpaidamountLabel.setBounds(700, 200, 202, 30);
         balanceamountLabel.setBounds(950, 200, 202, 30);
 		prescriptionLabel.setBounds(200, 200, 202, 30);
-        
-        patientNameBox.setBounds(200, 150, 202, 30);
+        phoneLabel.setBounds(220, 100, 202, 30);
+		
+        patientNameBox.setBounds(10, 150, 202, 30);
         treatmentNameBox.setBounds(450, 150, 202, 30);
+        phoneBox.setBounds(220, 150, 202, 30);
         
         apprximatetimeField.setBounds(700, 150, 202, 30);
 		approximatecostField.setBounds(950, 150, 202, 30);
@@ -123,9 +130,11 @@ public class TreatmentMaster implements ActionListener {
 		treatmentMasterFarme.add(totalpaidamountLabel);
 		treatmentMasterFarme.add(balanceamountLabel);
 		treatmentMasterFarme.add(prescriptionLabel);
+		treatmentMasterFarme.add(phoneLabel);
 		
 		treatmentMasterFarme.add(patientNameBox);
 		treatmentMasterFarme.add(treatmentNameBox);
+		treatmentMasterFarme.add(phoneBox);
 		
 		treatmentMasterFarme.add(apprximatetimeField);
 		treatmentMasterFarme.add(approximatecostField);
@@ -263,7 +272,7 @@ public class TreatmentMaster implements ActionListener {
 		{
 			
 			new Home();
-			treatmentMasterFarme.setVisible(false);
+			treatmentMasterFarme.dispose();
 		}
 		
 		else if(treatmentNameBox.hasFocus()) {
@@ -284,6 +293,34 @@ public class TreatmentMaster implements ActionListener {
 			}
 		}
 		
+		
+		
+	}
+	@Override
+	public void itemStateChanged(ItemEvent event) {
+		
+		 if (event.getStateChange() == ItemEvent.SELECTED) {
+	          Object item = event.getItem();
+	          
+	          
+	        	  if(!item.equals("Select"))
+				{
+	        		  phoneBox.removeAllItems();
+					List<String> list=null;
+					 list=new PatientDaoImpl().getPhonenumberListByName(item.toString());
+					
+					for(String i:list)
+					{
+						
+						phoneBox.addItem(i);
+					}
+				}
+				else if(item.equals("Select"))
+				{
+					phoneBox.removeAllItems();
+					
+				}	     
+	          }
 		
 	}
 	

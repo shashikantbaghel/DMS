@@ -1,23 +1,35 @@
 package com.dms.model;
 
+import java.util.Date;
+
 public class Patient {
 
-	@Override
-	public String toString() {
-		return "Patient [name=" + name + ", address=" + address + ", mobile=" + mobile + ", age=" + age + ", sex=" + sex
-				+ ", status=" + status + "]";
-	}
+	
+	
 	private String name;
 	private String address;
 	private String mobile;
 	private int age;
 	private String sex;
 	private String status;
+	private Date apponitmentdate;
 	
+	@Override
+	public String toString() {
+		return "Patient [name=" + name + ", address=" + address + ", mobile=" + mobile + ", age=" + age + ", sex=" + sex
+				+ ", status=" + status + ", apponitmentdate=" + apponitmentdate + "]";
+	}
 	
 	public Patient() {
 		
 	}
+	public Date getApponitmentdate() {
+		return apponitmentdate;
+	}
+	public void setApponitmentdate(Date apponitmentdate) {
+		this.apponitmentdate = apponitmentdate;
+	}
+	
 	public String getName() {
 		return name;
 	}

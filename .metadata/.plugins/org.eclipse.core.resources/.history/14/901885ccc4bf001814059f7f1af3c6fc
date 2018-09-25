@@ -1,0 +1,63 @@
+import java.awt.Dimension;
+import java.awt.FlowLayout;
+import java.sql.Date;
+import java.time.LocalDate;
+
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+
+import net.sourceforge.jdatepicker.impl.JDatePanelImpl;
+import net.sourceforge.jdatepicker.impl.JDatePickerImpl;
+import net.sourceforge.jdatepicker.impl.UtilDateModel;
+
+
+public class Test {
+
+	
+	public Test() {
+	
+		JFrame frame=new JFrame("Date");
+		frame.setPreferredSize(new Dimension(400,400));
+		
+		UtilDateModel model = new UtilDateModel();
+		JDatePanelImpl datePanel = new JDatePanelImpl(model);
+		JDatePickerImpl datePicker = new JDatePickerImpl(datePanel);
+		
+		
+		
+		frame.add(new JLabel("Birthday: "));
+		
+		
+		model.setDate(1990, 8, 24);
+		model.setSelected(true);
+		
+//		UtilCalendarModel model = new UtilCalendarModel();
+//		SqlDateModel model = new SqlDateModel();
+		
+	
+		
+//		datePicker = new JDatePickerImpl(datePanel);
+		datePicker = new JDatePickerImpl(datePanel, new DateLabelFormatter());
+		
+		frame.add(datePicker);
+		
+		JButton buttonOK = new JButton("OK");
+		//buttonOK.addActionListener(this);
+		
+		//add(buttonOK);
+		
+		
+		frame.setLayout(null));
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.pack();
+		frame.setLocationRelativeTo(null);
+		frame.setVisible(true);
+		
+	}
+	
+	public static void main(String[] args) {
+	
+		new Test();
+	}
+}

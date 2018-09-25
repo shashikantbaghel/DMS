@@ -5,7 +5,7 @@ import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.FileOutputStream;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import javax.swing.JButton;
@@ -18,9 +18,7 @@ import javax.swing.text.Document;
 import javax.swing.text.SimpleAttributeSet;
 import javax.swing.text.StyleConstants;
 import com.dms.dao.PatientDaoImpl;
-import com.dms.model.TreatmentMasterModel;
-import com.itextpdf.text.Paragraph;
-import com.itextpdf.text.pdf.PdfWriter;  
+import com.dms.model.TreatmentMasterModel;  
 public class Report implements ActionListener {  
 	
 	JButton printButton,backButton;
@@ -88,7 +86,8 @@ public class Report implements ActionListener {
 	        String phones="\n                                                "
 	        		+ "                                           Phone No : +91 9760724124";
 	        String patientName="\n Name : "+masterModel.getPatientName();
-	        String date="\n Date : "+new Date().toString();
+	        String simpleformatdate=new SimpleDateFormat("dd/MM/yyyy").format(new Date());
+	        String date="\n Date : "+simpleformatdate;
 	        String patuentAge="\n Age :"+new PatientDaoImpl().getPatientbyName(masterModel.getPatientName()).getAge();
 	        String pateintSex="\n Sex : "+new PatientDaoImpl().getPatientbyName(masterModel.getPatientName()).getSex();
 	       String prescription="\n\n\n "+masterModel.getPrescription();
@@ -190,7 +189,10 @@ public class Report implements ActionListener {
         String phones="\n                                                "
         		+ "                                           Phone No : +91 9760724124";
         String patientName="\n Name : ";
-        String date="\n Date : "+new Date().toString();
+        Date date1=new Date();
+     
+        String simpleformatdate=new SimpleDateFormat("dd/MM/yyyy").format(date1);
+        String date="\n Date : "+simpleformatdate;
         String patuentAge="\n Age :";
         String pateintSex="\n Sex : ";
         String prescription="";

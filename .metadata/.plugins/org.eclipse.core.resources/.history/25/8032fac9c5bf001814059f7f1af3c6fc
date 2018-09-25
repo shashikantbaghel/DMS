@@ -1,0 +1,66 @@
+import java.awt.Dimension;
+import java.awt.FlowLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.sql.Date;
+import java.time.LocalDate;
+
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+
+import net.sourceforge.jdatepicker.impl.JDatePanelImpl;
+import net.sourceforge.jdatepicker.impl.JDatePickerImpl;
+import net.sourceforge.jdatepicker.impl.UtilDateModel;
+
+
+public class Test implements ActionListener {
+
+	
+	public Test() {
+	
+		JFrame frame=new JFrame("Date");
+		frame.setPreferredSize(new Dimension(400,400));
+		
+		UtilDateModel model = new UtilDateModel();
+		model.setDate(1990, 8, 24);
+		model.setSelected(true);
+		
+		JDatePanelImpl datePanel = new JDatePanelImpl(model);
+		JDatePickerImpl datePicker = new JDatePickerImpl(datePanel);
+		
+		
+		datePicker = new JDatePickerImpl(datePanel, new DateLabelFormatter());
+		
+		JLabel jLabel=new JLabel("Birthday: ");
+		jLabel.setBounds(100,20,100,30);
+		
+		frame.add(jLabel);
+		frame.add(datePicker);
+		
+		JButton buttonOK = new JButton("OK");
+		buttonOK.addActionListener(this);
+		
+		
+		frame.add(buttonOK);
+		
+		
+		frame.setLayout(null);
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.pack();
+		frame.setLocationRelativeTo(null);
+		frame.setVisible(true);
+		
+	}
+	
+	public static void main(String[] args) {
+	
+		new Test();
+	}
+
+	@Override
+	public void actionPerformed(ActionEvent arg0) {
+		// TODO Auto-generated method stub
+		
+	}
+}
