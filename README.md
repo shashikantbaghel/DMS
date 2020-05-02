@@ -1,2 +1,0 @@
-# DMS
-Dental Management System
