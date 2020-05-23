@@ -397,7 +397,8 @@ public class PatientMaster implements ActionListener {
 		else if(e.getSource()==backButton)
 		{
 			patientMasterFrame.dispose();
-			new Home();
+			Home frame=new Home();
+			frame.setVisible(true);
 			
 		}
 		
